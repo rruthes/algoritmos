@@ -1,0 +1,17 @@
+STACK                       HEAP
+v1 -> /8B/                  ◻️0                                        ◻️1   
+i  10                       ◻️◻️◻️◻️◻️◻️◻️   ->   i=11              ◻️◻️◻️◻️◻️◻️◻️      
+tamanho 4                   10                                          10 11
+scanner  ->                          
+
+A memória alocada funciona como um carrinho em um aplicativo de compras. O carrinho só passa a existir quando o usuário
+adiciona algo nele. Até lá, existe somente um ponteiro que pode eventualmente ser chamado.
+
+Aplicação != Classe de modelo
+
+A mesma classe pode ser usada em diferentes aplicativos.
+
+%d ou %i -> converte pra int
+%f -> float
+%c -> chart
+%s -> string 

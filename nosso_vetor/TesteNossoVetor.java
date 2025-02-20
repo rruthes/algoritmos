@@ -1,14 +1,15 @@
+import java.util.Scanner;
+
 public class TesteNossoVetor {
-    public static void main(String[] args) {
-      NossoVetor v1 = new NossoVetor(5);
-      NossoVetor v2 = new NossoVetor();
-  
-      v1.inserir(2);
-      v2.inserir(30);
-  
-      for (int i = 10; i <= 1000; i+=10){
-        v1.inserir(i);
-      }
-    }
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("escolha o tamanho do vetor, 0 para o padrão");
+    int tamanho = scanner.nextInt();
+    NossoVetor v1 = new NossoVetor(tamanho);
+    int i=10;
+    while (!v1.estaCheio())
+      v1.inserir(i++);
+    scanner.close();
   }
-  
+}

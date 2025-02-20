@@ -4,7 +4,7 @@ public class NossoVetor {
   
     public NossoVetor(int tamanho) {
       vetor = new int[tamanho];
-      ocupacao = 0; //por clareza, ele zera por natureza
+      ocupacao = 0; 
     }
   
     public NossoVetor() {
@@ -12,9 +12,16 @@ public class NossoVetor {
     }
   
     public void inserir(int i) {
-      if (ocupacao < vetor.length) {
-        vetor[ocupacao++] = i; // como o ++ aparece dps de ocupação, n tem problema pois ele so incrementa após fazer a inserção
+      if (!estaCheio()) {
+        vetor[ocupacao++] = i; 
       }
-  
     }
-  }
+
+    public boolean estaCheio () {
+      return ocupacao == vetor.length;
+    }
+
+    public boolean estaVazio () {
+      return ocupacao == 0;
+    }
+}
