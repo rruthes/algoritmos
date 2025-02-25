@@ -17,11 +17,29 @@ public class NossoVetor {
       }
     }
 
+    public int remover(){
+      if (!estaVazio()) {
+        return vetor[--ocupacao];
+      }
+      else {
+        return -1;
+      }
+    }
+
     public boolean estaCheio () {
       return ocupacao == vetor.length;
     }
 
     public boolean estaVazio () {
       return ocupacao == 0;
+    }
+
+    @Override //não permite que a assinatura do método seja modificada
+    public String toString () {
+      String s = "ocupacao = " +  ocupacao + "\n";
+      for (int i=0; i<ocupacao; i++) {
+        s += vetor[i] + " ";
+      }
+      return s + "\n";
     }
 }

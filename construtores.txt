@@ -1,0 +1,6 @@
+a classe object passa suas características para todas as outras classes construtoras criadas dentro de um programa, mesmo
+que nadad ela seja declarada.
+
+toString() -> representação string de um objeto
+
+lógica na remoção de um elemento: removendo um elemento, é necessária a realocação dos demais, para que não sejam sobrepostos
