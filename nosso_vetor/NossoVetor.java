@@ -1,92 +1,127 @@
+import java.util.Random;
+
 public class NossoVetor {
   private int ocupacao;
   private int[] vetor;
 
   public NossoVetor(int tamanho) {
     vetor = new int[tamanho];
-    ocupacao = 0; //por clareza, ele zera por natureza
+    ocupacao = 0;
   }
 
   public NossoVetor() {
     this(10);
   }
 
-  // public boolean inserir(int i) {
-  //   if (!estaCheio()) {
-  //     // como o ++ aparece dps de ocupação, n tem problema pois ele so incrementa após fazer a inserção
-  //     vetor[ocupacao++] = i; 
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   public void inserir(int i) {
-    if (estaCheio()) redimensionaVetor(vetor.length*2);
+    if (estaCheio())
+      redimensiona(vetor.length * 2);
     vetor[ocupacao++] = i;
   }
 
-  public int getTamanho(){
+  public int getTamanho() {
     return vetor.length;
   }
-
   // public int remover() {
-  //   if (!estaVazio()){
-  //     return vetor[--ocupacao];
-  //   }
-  //   return -1;
+  // if (!estaVazio()) {
+  // int aux = vetor[--ocupacao];
+  // if (vetor.length >= 6 && ocupacao <= vetor.length / 4)
+  // redimensiona(vetor.length / 2);
+  // return aux;
+  // }
+  // else
+  // return -1;
   // }
 
   public int remover() {
-    if (!estaVazio()){
-      int i = vetor[--ocupacao];
-      if(vetor.length >= 6 && ocupacao <= vetor.length/4) redimensionaVetor(vetor.length/2);
-      return i;
-    }
-    return -1;
+    if (estaVazio())
+      throw new VetorVazioException("vetor vazio, nao ha o que remover");
+    int aux = vetor[--ocupacao];
+    if (vetor.length >= 6 && ocupacao <= vetor.length / 4)
+      redimensiona(vetor.length / 2);
+    return aux;
+  }
+
+  public boolean estaCheio() {
+    return ocupacao == vetor.length;
   }
 
   public boolean estaVazio() {
     return ocupacao == 0;
   }
 
-  boolean estaCheio() {
-    return ocupacao == vetor.length;
+  // private void dobraVetor () {
+  // int[] temp = new int[vetor.length*2]; //temporário alocado com o dobro do
+  // tamanho
+  // for (int i=0; i < ocupacao; i++) { //copiando elementos do vetor para o
+  // temporário
+  // temp[i] = vetor[i];
+  // }
+  // vetor = temp; //a variável de referência vetor "aponta" para a região
+  // "temporária"
+  // }
+  // private void reduzVetor() {
+  // int[] temp = new int[vetor.length/2];
+  // for (int i=0; i< ocupacao; i++) {
+  // temp[i] = vetor[i];
+  // }
+  // vetor = temp;
+  // }
+  private void redimensiona(int novoTamanho) {
+    int[] temp = new int[novoTamanho];
+    for (int i = 0; i < ocupacao; i++) {
+      temp[i] = vetor[i];
+    }
+    vetor = temp;
   }
 
   @Override
   public String toString() {
     String s = "ocupacao = " + ocupacao + "\n";
-    for (int i=0; i< ocupacao; i++){
+    for (int i = 0; i < ocupacao; i++) {
       s += vetor[i] + " ";
     }
     return s + "\n";
   }
 
-  // private void dobraVetor() {
-  //   // instancia um temporário com o dobro do tamanho
-  //   int[] vetorTemp = new int[vetor.length*2];
-  //   // copiar todos os elementos do vetor para o temporário
-  //   for (int i = 0; i < ocupacao; i++){
-  //     vetorTemp[i] = vetor[i];
-  //   }
-  //   // vetor passa a referenciar o temporário
-  //   vetor = vetorTemp;
-  // }
+  public boolean contem (int i) {
+    for (int j=0; j < ocupacao; j++)
+      if (vetor[j] == i)
+        return true;
+    return false;
+  }
+  public int indiceDe (int i) {
+    for (int j=0; j < ocupacao; j++)
+      if (vetor[j] == i)
+        return j;
+    return -1;
+  }
 
-  // private void reduzVetor() {
-  //   int[] vetorTemp = new int[vetor.length/2];
-  //   for (int i = 0; i < ocupacao ; i++){
-  //     vetorTemp[i] = vetor[i];
-  //   }
-  //   vetor = vetorTemp;
-  // }
-
-
-  private void redimensionaVetor(int novoTamanho){
-    int[] vetorTemp = new int[novoTamanho];
-    for (int i = 0; i < ocupacao; i++){
-      vetorTemp[i] = vetor[i];
+  public void preencheVetor () {
+    Random random = new Random();
+    for (int i=0; i<vetor.length; i++) {
+      vetor[i] = random.nextInt(vetor.length*10);
     }
-    vetor = vetorTemp;
+    ocupacao = vetor.length;
+  }
+
+  public void bubbleSort () {
+    for (int i=1; i<vetor.length; i++) {
+      for (int j=0; j<vetor.length - i; j++) {
+        if (vetor[j] > vetor[j+1]) {
+          int aux = vetor[j];
+          vetor[j] = vetor[j+1];
+          vetor[j+1] = aux;
+        }
+      }
+    }
+  }
+
+
+}
+
+class VetorVazioException extends RuntimeException {
+  public VetorVazioException(String msg) {
+    super(msg);
   }
 }
