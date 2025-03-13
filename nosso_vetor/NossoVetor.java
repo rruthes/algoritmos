@@ -1,5 +1,4 @@
 import java.util.Random;
-
 public class NossoVetor {
   private int ocupacao;
   private int[] vetor;
@@ -97,17 +96,16 @@ public class NossoVetor {
     return -1;
   }
 
-  public void preencheVetor () {
+  public void preecheVetor () {
     Random random = new Random();
     for (int i=0; i<vetor.length; i++) {
-      vetor[i] = random.nextInt(vetor.length*10);
+      vetor[i] = random.nextInt(vetor.length * 10);
     }
     ocupacao = vetor.length;
   }
-
   public void bubbleSort () {
     for (int i=1; i<vetor.length; i++) {
-      for (int j=0; j<vetor.length - i; j++) {
+      for (int j=0; j < vetor.length - i; j++) {
         if (vetor[j] > vetor[j+1]) {
           int aux = vetor[j];
           vetor[j] = vetor[j+1];
@@ -116,7 +114,28 @@ public class NossoVetor {
       }
     }
   }
-
+  public void
+  selectionsort ()
+  {
+     for (int i = 0; i < vetor.length-1; ++i) {
+        int min = i;
+        for (int j = i+1; j < vetor.length; ++j)
+           if (vetor[j] < vetor[min])  min = j;
+        int x = vetor[i]; 
+        vetor[i] = vetor[min]; 
+        vetor[min] = x;
+     }
+  }
+  public void insertionsort ()
+  {
+     for (int j = 1; j < vetor.length; ++j) {
+        int x = vetor[j];
+        int i;
+        for (i = j-1; i >= 0 && vetor[i] > x; --i) 
+           vetor[i+1] = vetor[i];
+        vetor[i+1] = x;
+     }
+  }
 
 }
 
