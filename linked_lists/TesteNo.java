@@ -5,5 +5,6 @@ public class TesteNo {
         no2 = new No(8);
         System.out.println("no1: " + no1);
         System.out.println("no2: " + no2);
+        no1.setProximo(no2);
     }
 }
