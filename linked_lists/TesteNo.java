@@ -6,5 +6,6 @@ public class TesteNo {
         System.out.println("no1: " + no1);
         System.out.println("no2: " + no2);
         no1.setProximo(no2);
+        System.out.println("no1 alterado\n" + no1);
     }
 }
