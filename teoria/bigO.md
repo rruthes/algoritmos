@@ -8,7 +8,7 @@ Forma de determinar o quão eficiente é um algoritmo, classificando-o quanto ao
 - O tempo de execução não muda, não dependendo do tamanho da entrada.
 - O algoritmo sempre executa a mesma quantidade de operações.
 - Exemplo:
-````
+````python
 def acessar_elemento(lista, i):
     return lista[i]
 ````
@@ -18,7 +18,7 @@ def acessar_elemento(lista, i):
 - O tempo de execução cresce lentamente à medida que a entrada aumenta
 - O tamanho do problema reduz pela metade (ou outra fração) a cada iteração.
 - É usado na busca binária.
-````
+````python
 def busca_binaria(arr, alvo):
     inicio, fim = 0, len(arr) - 1
     while inicio <= fim:
@@ -37,7 +37,7 @@ def busca_binaria(arr, alvo):
 - O tempo de execução cresce proporcionalmente ao tamanho da entrada.
 - Um único loop que percorre todos os elementos uma vez.
 - É usado para percorrer um array em busca de um valor.
-````
+````python
 def buscar_elemento(arr, alvo):
     for i in range(len(arr)):
         if arr[i] == alvo:
@@ -50,7 +50,7 @@ def buscar_elemento(arr, alvo):
 - O tempo de execução cresce um pouco mais rápido que linear, mas não exponencialmente.
 - O problema é dividido em partes menores e processado recursivamente.
 - Usado em alguns algoritmos de ordenação eficiente (Quick Sort e Merge Sort).
-````
+````python
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -78,7 +78,7 @@ def merge(esq, dir):
 - O tempo de execução cresce exponencialmente conforme a entrada aumenta.
 - Normalmente apresenta dois loops aninhados percorrendo toda a entrada.
 - É o caso do Bubble Sort e do Selection Sort.
-````
+````python
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -92,7 +92,7 @@ def bubble_sort(arr):
 - O tempo de execução cresce muito rapidamente conforme a entrada aumenta.
 - Cada chamada recursiva gera duas novas chamadas, o que gera um crescimento exponencial.
 - É o caso de resoluções de Fibonacci simples.
-````
+````python
 def fibonacci(n):
     if n <= 1:
         return n
